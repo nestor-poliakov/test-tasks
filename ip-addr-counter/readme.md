@@ -1,8 +1,9 @@
 # IP address counter
 
-Task description in [task.mf](task.md).
+Task description in [task.md](task.md).
 
 Build app: ```make build```
+
 Run app: ```./ip-addr-counter <file path> <threads(optional)>```
 
 App uses about 1 GB of memory.
