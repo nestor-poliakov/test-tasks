@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"os"
 	"sync"
 	"sync/atomic"
 )
@@ -18,7 +19,7 @@ func NewProcessor() *Processor {
 	}
 }
 
-func (p *Processor) Process(reader io.Reader, threads int) {
+func (p *Processor) Process(reader *os.File, threads int) {
 	bufPool := NewBufferPool()
 	r := NewRunreader(reader)
 	ch := make(chan []byte, threads)
@@ -147,8 +148,7 @@ func (p *Processor) Result() (res int) {
 				(d>>28)&1 +
 				(d>>29)&1 +
 				(d>>30)&1 +
-				(d>>31)&1 +
-				(d>>32)&1)
+				(d>>31)&1)
 	}
 	return res
 }

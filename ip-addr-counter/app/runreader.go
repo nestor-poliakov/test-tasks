@@ -2,18 +2,18 @@ package app
 
 import (
 	"fmt"
-	"io"
+	"os"
 )
 
 const RBUF_LEN = 20
 
 type Runreader struct {
-	r   io.Reader
+	r   *os.File
 	buf []byte
 	n   int
 }
 
-func NewRunreader(r io.Reader) *Runreader {
+func NewRunreader(r *os.File) *Runreader {
 	return &Runreader{
 		r:   r,
 		buf: make([]byte, RBUF_LEN),
